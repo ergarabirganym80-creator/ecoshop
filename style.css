@@ -1,0 +1,1448 @@
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+}
+
+/* Түнгі режим түстері */
+body.dark-theme {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+}
+
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: 0.3s; 
+}
+
+/* БАРЛЫҚ БЛОКТАРДЫ ОСЫҒАН БАЙЛАНЫСТЫРУ КЕРЕК */
+header, section, .card, .feature-item, .review-card, .about-section {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+h1, h2, h3, h4, .section-title {
+    color: #a8d5a2 !important; /* Түнде де, күндіз де көрінетін жұмсақ жасыл */
+}
+/* 1. Жалпы стильдер */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fdfaf5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 2. Header және Навигация  */
+header {
+    background: #fff;
+    padding: 10px 5%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+text-decoration: none;
+line-height: 0.9;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.logo span {
+    font-family: 'Helvetica', sans-serif; 
+    font-size: 28px; (көзге бірден түсетіндей үлкендік)
+    font-weight: 800; (қалың әрі нық)
+    color: #2d5a27; (табиғи қою жасыл)
+    letter-spacing: 4px; (әріптер арасы алшақ — бұл ең басты эстетика)
+    text-transform: uppercase; (барлық әріп үлкен болуы керек)
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #2d5a27;
+}
+
+/* 3. Басты баннер  */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), 
+            url('../main.jpg');    
+    background-size: cover;
+    background-position: center;
+    height: 90vh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #264522;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Экранға қарай өзгеретін өлшем */
+    margin-bottom: 20px;
+}
+
+.btn-main {
+    background-color: #2d5a27;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;ы
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-main:hover {
+    background-color: #1e3d1a;
+}
+
+/* 4. Тауарлар блогы */
+.products {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.buy-btn {
+    display: inline-block;
+    background-color: #2d5a27;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.buy-btn:hover {
+    background-color: #128C7E;
+    transform: scale(1.05);
+}
+
+/* 5. Пікірлер (Reviews) */
+#reviews {
+    padding: 80px 5%;
+    background: linear-gradient(to bottom, #ffffff, #f0fdf4);
+    text-align: center;
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.review-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    max-width: 350px;
+    border-bottom: 5px solid #2d5a27;
+    transition: 0.3s;
+}
+
+.review-card::before {
+    content: "⭐⭐⭐⭐⭐";
+    display: block;
+    margin-bottom: 10px;
+}
+
+.review-card.stars-4::before {
+    content: "⭐⭐⭐⭐";
+}
+
+/* 6. Footer (Байланыс) */
+footer {
+    background-color: #2d5a27;
+    color: white;
+    padding: 50px 5%;
+    text-align: center;
+}
+
+.social-links {
+    margin: 25px 0;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+.whatsapp { background-color: #25D366; }
+.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743); }
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-3px);
+}
+
+body { font-family: 'Georgia', serif; background-color: #fdfaf5; margin: 0; color: #333; }
+
+.header-container { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: white; border-bottom: 1px solid #eee; }
+
+.logo span { font-size: 24px; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; color: #4a6741; }
+
+nav a { text-decoration: none; color: #333; margin-left: 20px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 40px 5%; }
+
+.card { background: white; padding: 15px; text-align: center; border: 1px solid #f0f0f0; }
+
+.product-img { width: 100%; height: 300px; object-fit: cover; margin-bottom: 15px; }
+
+.buy-btn { display: block; background-color: #4a6741; color: white; padding: 12px; text-decoration: none; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; transition: 0.3s; }
+
+.cart-icon { font-size: 20px; position: relative; text-decoration: none; }
+
+#cart-count { background: #e6683c; color: white; border-radius: 50%; padding: 2px 6px; font-size: 11px; position: absolute; top: -12px; right: -15px; }
+
+.logo {
+display: flex;
+align-items: center;
+gap: 10px;
+text-decoration: none;
+}
+
+.logo span {
+font-family: sans-serif;
+font-size: 24px;
+font-weight: 800;
+color: #2d5a27;
+}
+
+nav ul {
+display: flex;
+list-style: none;
+gap: 30px;
+}
+
+/* 1. БАСТЫ ТАҚЫРЫП ПЕН МӘТІНДІ АҚ ҚЫЛУ */
+.hero h1 {
+font-size: 60px !important;
+color: white !important;
+text-shadow: 2px 4px 10px rgba(0,0,0,0.5) !important;
+font-weight: bold !important;
+}
+
+.hero p {
+font-size: 22px !important;
+color: white !important;
+text-shadow: 1px 2px 5px rgba(0,0,0,0.5) !important;
+margin-bottom: 70px !important;
+}
+
+/* 2. БАТЫРМАНЫҢ ТҮСІ МЕН КӨЛЕМІ */
+.btn-main {
+background-color: #2d5a27 !important;
+color: white !important;
+padding: 15px 40px !important;
+border-radius: 10px !important;
+font-size: 20px !important;
+text-decoration: none !important;
+display: inline-block !important;
+font-weight: bold !important;
+}
+
+/* 3. МЕНЮ СӨЗДЕРІНІҢ АРАСЫН АШУ */
+nav a {
+margin-left: 25px !important;
+color: #333 !important;
+font-weight: 600 !important;
+text-decoration: none !important;
+}
+
+/* Таңдаулы өнімдер тақырыбы*/
+.section-title {
+    font-size: 36px !important; /* Өлшемі */
+    font-weight: 600 !important; /* Қалыңдығы */
+    color: #2d5a27 !important; /* Түсі (логотиптегідей қою жасыл) */
+    text-align: center;
+    margin-bottom: 20px !important;
+    text-transform: uppercase; /* Барлық әріпті үлкен қылу  */
+    letter-spacing: 2px; /* Әріптер арасын сәл ашу */
+}
+
+/* Оның астындағы кіші мәтінді де реттеу */
+.products p {
+    font-size: 25px !important;
+    color: #272626;
+    margin-bottom: 40px !important;
+}
+.about-section {
+    padding: 60px 5%;
+    background-color: #fff;
+}
+
+.about-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text p {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.stats-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    min-width: 300px;
+}
+
+.review-form-section {
+    padding: 50px 5%;
+    background-color: #f9fbf9;
+    text-align: center;
+}
+
+#review-form {
+    max-width: 500px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#review-form input, #review-form textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: sans-serif;
+}
+
+.btn-submit {
+    background-color: #2d5a27;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #1e3d1a;
+}
+
+/* Gmail жазылатын кішкентай мәтін стилі */
+.reviewer-gmail {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+}
+
+/* Артықшылықтар бөлімі - Жинақы стиль */
+.features {
+    padding: 40px 0;
+    background-color: #fcfcfc;
+    width: 100%;
+}
+
+.features-container {
+    display: flex;            /* Бәрін бір қатарға тізеді */
+    justify-content: center;  /* Ортаға жинайды */
+    align-items: center;      /* Биіктігін теңестіреді */
+    gap: 15px;                /* Арасындағы қашықтық */
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.feature-item {
+    background: #ffffff;
+    width: 180px;            /* КӨЛЕМІ КІШІРЕЙДІ */
+    height: 180px;           /* КӨЛЕМІ КІШІРЕЙДІ */
+    border-radius: 50%;      /* Нағыз домалақ */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.feature-item:hover {
+    transform: scale(1.05);  /* Үстіне барғанда сәл ғана үлкейеді */
+}
+
+.icon-box {
+    font-size: 30px;         /* Иконка да кішірейді */
+    margin-bottom: 5px;
+}
+
+.feature-item h4 {
+    color: #2d5a27;
+    font-size: 14px;         /* Мәтін кішірейді */
+    margin-bottom: 4px;
+}
+
+.feature-item p {
+    color: #888;
+    font-size: 11px;         /* Сипаттама кішірейді */
+    margin: 0;
+}
+
+/* Батырмалардың орналасуы */
+.nav-extra {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 20px;
+    gap: 15px;
+}
+
+.mode-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.mode-btn:hover { transform: scale(1.2); }
+
+.lang-switcher { font-size: 14px; color: #333; }
+.lang-btn { cursor: pointer; transition: 0.3s; }
+.lang-btn.active { font-weight: bold; color: #2d5a27; }
+.divider { margin: 0 5px; color: #ccc; }
+
+/* ТҮНГІ РЕЖИМ СТИЛЬДЕРІ */
+body.dark-theme {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-theme header {
+    background-color: #1e1e1e !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+body.dark-theme .feature-item, 
+body.dark-theme .card, 
+body.dark-theme .review-card {
+    background-color: #252525 !important;
+    border: 1px solid #333 !important;
+    color: #fff !important;
+}
+
+body.dark-theme nav a { color: #bbb; }
+body.dark-theme .section-title { color: #81b37a; }
+
+/* 1. Негізгі түстер (Күндізгі режим) */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --section-bg: #f9f9f9;
+    --card-bg: #ffffff;
+    --accent-color: #2d5a27; /* Жасыл түс */
+    --header-bg: #ffffff;
+}
+
+/* 2. ТҮНГІ РЕЖИМ ТҮСТЕРІ */
+body.dark-theme {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --section-bg: #1e1e1e;
+    --card-bg: #252525;
+    --accent-color: #a8d5a2; /* Түнде ашық жасыл жақсы көрінеді */
+    --header-bg: #1a1a1a;
+}
+
+/* 3. Стильдерді қолдану */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    background-color: var(--header-bg) !important;
+    border-bottom: 1px solid #333;
+}
+
+/* "Біз туралы", "Пікірлер" және т.б. секциялар */
+section, .about-section, .reviews-section {
+    background-color: var(--bg-color) !important;
+}
+
+/* Карточкалар мен Домалақ артықшылықтар */
+.card, .feature-item, .review-card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid #333 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+}
+
+/* Тақырыптар */
+h1, h2, .section-title, h4 {
+    color: var(--accent-color) !important;
+}
+
+/* Навигация сілтемелері */
+nav a {
+    color: var(--text-color) !important;
+}
+
+/* Тіл ауыстырғыш */
+.lang-switcher, .divider {
+    color: var(--text-color);
+}
+
+/* Күндізгі режим */
+:root {
+    --фон: #ffffff;
+    --мәтін: #333333;
+    --жасыл: #2d5a27; 
+}
+
+/* Түнгі режим */
+body.dark-theme {
+    --фон: #1a1a1a;
+    --мәтін: #333333;
+    --жасыл: #81b37a;
+}
+
+/* Осыларды қолдану */
+body { 
+    background-color: var(--фон); 
+    color: var(--мәтін); 
+}
+
+/* "Бізбен байланысыңыз" бөлімі */
+.contact-section { 
+    background-color: var(--жасыл); 
+    color: white !important; 
+}
+
+/* Эко-сөмке жазуы */
+.product-card h3 { color: var(--жасыл) !important; }
+
+/* --- КҮНДІЗГІ РЕЖИМ (Default) --- */
+body {
+    background-color: #ffffff;
+    color: #333333;
+    transition: 0.3s;
+}
+
+/* Күндіз "Бізбен байланысыңыз" блогы жасыл, мәтіні ақ болады */
+.contact-section {
+    background-color: #2d5a27; /* Қою жасыл фон */
+    color: #ffffff !important; /* Ақ мәтін */
+    padding: 50px 20px;
+}
+
+/* Күндізгі тауар аттары (Эко-сөмке т.б.) */
+.product-card h3 {
+    color: #2d5a27; 
+}
+
+/* --- ТҮНГІ РЕЖИМ (Dark Mode қосылғанда) --- */
+body.dark-theme {
+    background-color: #1a1a1a;
+    color: #f1f1f1;
+}
+
+/* Түнде "Бізбен байланысыңыз" блогы қараңғы болады */
+body.dark-theme .contact-section {
+    background-color: #252525;
+    color: #ffffff !important;
+}
+
+/* Түндегі тауар аттары */
+body.dark-theme .product-card h3 {
+    color: #a8d5a2; /* Түнде көрінетін жұмсақ жасыл */
+}
+
+/* Түндегі навигация сілтемелері */
+body.dark-theme nav a {
+    color: #ffffff;
+}
+
+/* --- DARK MODE ЖАЗУЛАРЫН ТҮЗЕТУ --- */
+body.dark-theme nav a { 
+    color: #ffffff !important; 
+    opacity: 1 !important;
+}
+
+body.dark-theme .about-text p, 
+body.dark-theme .about-section,
+body.dark-theme .about-text {
+    color: #ffffff !important;
+}
+
+/* "Біз туралы" ішіндегі кішкентай тізімдер мен мәтіндер */
+body.dark-theme .about-section span,
+body.dark-theme .about-section div {
+    color: #ffffff !important;
+}
+
+/* Түнде пікір жазатын жердің мәтіндері көрінуі үшін */
+body.dark-theme #review-form input, 
+body.dark-theme #review-form textarea {
+    color: #ffffff !important;
+    background-color: #333 !important;
+    border: 1px solid #444;
+}
+
+/* --- НАВИГАЦИЯНЫ ЖӨНДЕУ --- */
+
+/* 1. КҮНДІЗГІ РЕЖИМДЕ: Мәтіндер анық қара-сұр болады */
+nav a {
+    color: #333333 !important;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* 2. ҚАРА РЕЖИМДЕ (Dark Mode): Мәтіндер  АППАҚ болады */
+body.dark-theme nav a {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* 3. Түнде логотип те ақшыл-жасыл болып жарқырап тұруы үшін */
+body.dark-theme .logo span {
+    color: #a8d5a2 !important;
+}
+
+/* 4. Тіл ауыстырғыш (KZ/RU) түнде көрінуі үшін */
+body.dark-theme .lang-switcher {
+    color: #ffffff !important;
+}
+
+/* НАВИГАЦИЯНЫ  ЖӨНДЕУ */
+
+/* 1. КҮНДІЗГІ РЕЖИМДЕ (Қара мәтін) */
+header nav a, 
+.header-container nav a {
+    color: #333333 !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+}
+
+/* 2. ҚАРА РЕЖИМДЕ (Аппақ мәтін) */
+body.dark-theme header, 
+body.dark-theme .header-container {
+    background-color: #1a1a1a !important;
+}
+
+body.dark-theme nav a, 
+body.dark-theme header nav a {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* 3. Логотип түнде көрінуі үшін */
+body.dark-theme .logo span {
+    color: #ffffff !important;
+}
+
+/* --- ТАҢДАУЛЫ ӨНІМДЕР АСТЫНДАҒЫ МӘТІНДІ ТҮЗЕТУ --- */
+
+/* Күндізгі режимде  */
+.products p {
+    color: #666666 !important;
+}
+
+/* ҚАРА РЕЖИМДЕ  */
+body.dark-theme .products p {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+body.dark-theme .section-subtitle {
+    color: #ffffff !important;
+}
+
+/* БАЙЛАНЫС БӨЛІМІНДЕГІ МӘТІНДЕРДІ ТҮЗЕТУ */
+
+/* Күндізгі режимде тақырып көрінуі үшін */
+footer h2, .contact-section h2 {
+    color: #ffffff !important; 
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* color: #2d5a27 !important; */
+
+.contact-section p, footer p {
+    color: #ffffff !important;
+}
+
+/* БАРЛЫҚ БЛОКТАРДЫҢ ШЕТТЕРІН ТЕҢЕСТІРУ */
+
+/* 1. Навигацияның ішіндегі мазмұнды шектеу */
+.header-container {
+    max-width: 1200px; /* Ортадағы блоктардың енімен бірдей болуы керек */
+    margin: 0 auto;    /* Ортаға қою */
+    padding: 0 20px;   /* Шетіне тиіп тұрмауы үшін */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 2. Төменгі жасыл блоктың (contact-section) мазмұнын ортаға келтіру */
+.contact-section {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px !important;
+}
+
+header {
+    width: 100%;
+    background-color: #ffffff; /* Күндіз */
+    /* max-width: 1200px; margin: 0 auto; */
+}
+
+/* 4. Қара режимде де навигация ортада қалуы үшін */
+body.dark-theme .header-container {
+    background-color: transparent;
+}
+
+/* ЖАСЫЛ БЛОКТЫҢ ШЕТІНДЕГІ АҚ ЖОЛАҚТЫ ЖОЮ */
+
+/* 1. Байланыс бөлімін экранның шетіне дейін созу */
+footer, .contact-section {
+    width: 100vw !important;      /* Экранның толық ені */
+    margin-left: calc(-50vw + 50%) !important; /* Ортадан шетке қарай созу */
+    margin-right: calc(-50vw + 50%) !important;
+    position: relative;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+}
+
+.search-and-cart {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    justify-content: flex-end; /* Оң жаққа жылжытады */
+}
+
+#product-search {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.cart-icon {
+    font-size: 24px;
+    cursor: pointer;
+    position: relative;
+}
+
+#cart-count {
+    background: #e67e22;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 12px;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+}
+
+/* Шашылып тұрған header-ді жинау */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Лого сол жақта, меню оң жақта */
+    align-items: center;
+    padding: 10px 5%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Сілтемелер арасындағы қашықтық */
+}
+
+/* Іздеу мен себет тұрған блокты реттеу */
+.nav-extra {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+#product-search {
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    width: 150px; /* Тым ұзын болмауы үшін */
+}
+
+/* Мобильді нұсқада мәтіндер сыйып кетуі үшін */
+nav a {
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap; /* Мәтін екі жолға бөлінбеуі үшін */
+}
+
+.buy-btn {
+    transition: all 0.3s ease; /* Анимация үшін */
+}
+
+.view-cart-btn {
+    background-color: #4CAF50 !important;
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+/* "Сатып алу" батырмасы бұрынғыша қалады, бірақ астынан орын қалдырамыз */
+.buy-btn {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Жаңа себет батырмасының стилі */
+.add-to-cart-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #f8f9fa; /* Ақшыл түс */
+    color: #2d5a27;
+    border: 1px solid #2d5a27;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #2d5a27;
+    color: white;
+}
+
+.cart-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 15px; /* Тіл ауыстырғышпен арақашықтық */
+    cursor: pointer;
+}
+
+.cart-icon-top {
+    font-size: 20px;
+}
+
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #ff4757; /* Қызыл түс */
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Модальді терезе фоны */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 9999; /* Басқа элементтердің үстінде тұруы үшін */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6); /* Қараңғы фон */
+}
+
+/* Терезенің ішіндегі ақ блок */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    position: relative;
+    color: #333;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f4f4f4;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.q-btn {
+    background: #2d5a27; /* Тауар батырмасының түсімен бірдей */
+    color: white;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.q-num {
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+
+.info-content {
+    display: none; /* Басында жабық тұрады */
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: left;
+    border-left: 3px solid #2d5a27;
+}
+
+.info-btn {
+    background: none;
+    border: 1px solid #2d5a27;
+    color: #2d5a27;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.info-btn:hover {
+    background: #e8f5e9;
+}
+
+/* Каталог контейнері */
+#catalog .product-grid {
+    display: flex; /* Тауарларды қатарға қою */
+    justify-content: center; /* Ортаға келтіру */
+    flex-wrap: wrap; /* Экранға сыймаса, келесі жолға түсу */
+    gap: 25px; /* Тауарлар арасындағы қашықтық */
+    padding: 40px 20px;
+}
+
+/* Әрбір тауар карточкасы */
+#catalog .product-card {
+    width: 280px; /* Карточканың нақты ені */
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 15px; /* Бұрыштарын жұмсарту */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Жеңіл көлеңке */
+    transition: 0.3s; /* Тышқанды апарғандағы эффект үшін */
+}
+
+/* Тауар суреттерінің көлемін теңестіру */
+#catalog .product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain; /* Сурет қисық болып кетпеуі үшін */
+    margin-bottom: 15px;
+}
+
+#catalog .product-card:hover {
+    transform: translateY(-5px); /* Тышқанды апарғанда көтеріледі */
+}
+
+/* Шапканың жалпы контейнері */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 5%;
+    max-width: 100%; /* Экранның толық енін алу үшін */
+    box-sizing: border-box;
+}
+
+/* Навигация мәзірі (сілтемелер) */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Сілтемелер арасындағы қашықтық */
+}
+
+nav a {
+    font-size: 8px; /* Жазуларды кішірейттік */
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: nowrap; /* Сөздер екі жолға бөлінбеуі үшін */
+}
+
+/* Тіл мен Түнгі режим тұрған блок */
+.nav-extra {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+/* Тіл ауыстырғыш стильдері */
+.lang-switcher {
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+}
+
+.mode-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* --- HEADER ЖӨНДЕУ (FINAL FIX) --- */
+
+header {
+    width: 100% !important;
+    padding: 15px 0 !important; /* Биіктігін сәл ұлғайттық, әдемі көріну үшін */
+    height: auto !important;
+}
+
+.header-container {
+    max-width: 1300px !important; /* Контейнерді шектедік */
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 20px !important;
+}
+
+/* Логотипті ықшамдау */
+.logo {
+    flex-shrink: 0 !important;
+}
+
+.logo span {
+    font-size: 22px !important; /* Тым үлкен емес, бірақ анық */
+    letter-spacing: 2px !important;
+}
+
+/* Навигациялық мәзір (Ортадағы жазулар) */
+nav {
+    display: flex !important;
+    gap: 10px !important; /* Сөздердің арасы тым жақын болмауы керек */
+    justify-content: center !important;
+    flex-grow: 1 !important;
+}
+
+nav a {
+    font-size: 11px !important; /* 8px тым кішкентай, 11px — оңтайлы */
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    padding: 5px 2px !important;
+}
+
+/* Оң жақ блок (Себет, Тіл, Түн) */
+.nav-extra {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    flex-shrink: 0 !important;
+    margin-left: 10px !important;
+}
+
+/* Тіл ауыстырғыш пен Түнгі режим */
+.lang-switcher {
+    font-size: 11px !important;
+}
+
+.mode-btn {
+    font-size: 16px !important;
+}
+
+/* Себет белгішесі */
+.cart-wrapper {
+    font-size: 18px !important;
+}
+
+/* МОБИЛЬДІ ТЕЛЕФОНДАР ҮШІН */
+@media (max-width: 1024px) {
+    nav a {
+        font-size: 9px !important;
+        gap: 8px !important;
+    }
+    .logo span {
+        font-size: 18px !important;
+    }
+}
+
+/* Мәлімет терезесіндегі мәтіндерді реттеу */
+
+/* Жалпы контейнер (егер класы басқа болса, соған ауыстыр) */
+.product-details, .modal-content {
+    padding: 15px !important;
+}
+
+/* "Не үшін қажет:" және "Қолдану тәсілі:" тақырыпшалары */
+.product-details h3, 
+.product-details strong,
+.product-details b {
+    font-size: 16px !important; /* Тақырыпша өлшемі */
+    margin-bottom: 8px !important;
+    display: inline-block;
+}
+
+/* Негізгі сипаттама мәтіні */
+.product-details p {
+    font-size: 13px !important; /* Мәтін өлшемі (бұрын 16-18px болған сияқты) */
+    line-height: 1.4 !important; /* Жолдардың арақашықтығы */
+    color: #444; /* Көзге жеңіл тию үшін сәл сұрлау */
+    margin-bottom: 12px !important;
+}
+
+/* "Жабу" батырмасын кішірейту */
+.close-btn, .product-details button {
+    padding: 5px 15px !important;
+    font-size: 12px !important;
+    height: auto !important;
+}
+
+/* МӘТІНДІ КІШІРЕЙТУГЕ АРНАЛҒАН НАҚТЫ КОД */
+
+/* 1. Модальді терезенің ішіндегі барлық мәтін блогы */
+.info-content, .modal-content {
+    padding: 10px 15px !important;
+}
+
+/* 2. "Не үшін қажет" сияқты қалың тақырыптар */
+.info-content h3, 
+.info-content strong, 
+.info-content b,
+.modal-content b {
+    font-size: 14px !important; /* Бұрын 18-20 болса, қазір 14px */
+    margin-top: 5px !important;
+    margin-bottom: 3px !important;
+    display: block !important;
+    line-height: 1.2 !important;
+}
+
+/* 3. Негізгі сипаттама мәтіндері (Пластик пакеттерді...) */
+.info-content p, 
+.info-content div,
+.modal-content p {
+    font-size: 12px !important; /* Өте жинақы өлшем */
+    line-height: 1.3 !important; /* Жолдар арасын жақындаттық */
+    margin-bottom: 8px !important;
+    color: #333 !important;
+}
+
+/* 4. "Жабу" немесе "Толығырақ" батырмалары */
+.info-btn, .close-btn, .modal-content button {
+    font-size: 11px !important;
+    padding: 4px 10px !important;
+    height: auto !important;
+    margin-top: 5px !important;
+}
+
+/* 5. Түнгі режимде мәтін анық көрінуі үшін */
+body.dark-theme .info-content p,
+body.dark-theme .modal-content p {
+    color: #ccc !important;
+}
+
+/* КАТЕГОРИЯЛАР СТИЛЬДЕРІ */
+.categories-section {
+    padding: 40px 5%;
+    text-align: center;
+    background-color: var(--bg-color);
+}
+
+.categories-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.category-item {
+    background: var(--card-bg);
+    border: 1px solid #eee;
+    border-radius: 15px;
+    padding: 20px;
+    width: 130px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+    border-color: #2d5a27;
+    box-shadow: 0 6px 15px rgba(45, 90, 39, 0.15);
+}
+
+.category-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.category-item span {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Түнгі режим үшін түзету */
+body.dark-theme .category-item {
+    border-color: #333;
+}
+
+.catalog-controls {
+    padding: 20px 5%;
+    background: var(--bg-color);
+}
+
+.controls-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+#catalog-search {
+    padding: 10px 20px;
+    width: 300px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.3s;
+}
+
+#catalog-search:focus {
+    border-color: #2d5a27;
+    box-shadow: 0 0 8px rgba(45, 90, 39, 0.2);
+}
+
+#price-sort {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Түнгі режим белсенді болғандағы өзгерістер */
+body.dark-mode #contact {
+    background-color: #1a2e18; /* Қанық жасылдың орнына күңгірт, жұмсақ жасыл */
+    color: #e0e0e0;
+}
+
+body.dark-mode .review-card {
+    background-color: #2c2c2c; /* Карточка түсін сәл ашықтау қылсақ, мәтін жақсы оқылады */
+    border: 1px solid #444;    /* Шектерін белгілеу үшін */
+    color: #fff;
+}
+
+body.dark-mode #contact h2, 
+body.dark-mode #contact p {
+    color: #ffffff;
+}
+
+/* WhatsApp пен Instagram батырмалары түнгі режимде тым ашық көрінсе */
+body.dark-mode .btn.whatsapp, 
+body.dark-mode .btn.instagram {
+    opacity: 0.9;
+    filter: brightness(0.8); /* Аздап күңгірттеу */
+}
+
+/* Түнгі режимде пікірлер бөлімінің фонын өзгерту */
+body.dark-mode .reviews, 
+body.dark-mode #reviews {
+    background-color: #121212 !important; /* Қара немесе күңгірт түс */
+}
+
+/* Пікірлер тұрған жалпы контейнер ақ болып қалса */
+body.dark-mode .container {
+    background-color: transparent !important;
+}
+
+/* "Клиенттердің пікірі" деген жазуды ақ қылу */
+body.dark-mode .section-title, 
+body.dark-mode .reviews h2 {
+    color: #ffffff;
+}
+
+/* --- ПІКІРЛЕР БӨЛІМІН ТҮНГІ РЕЖИМГЕ ИКЕМДЕУ --- */
+
+/* 1. Фонды қара қылу (Градиентті өшіреміз) */
+body.dark-theme #reviews, 
+body.dark-theme .review-form-section {
+    background: #121212 !important; /* Градиенттің орнына таза қара түс */
+}
+
+/* 2. Пікір жазатын форманың фонын түзеу */
+body.dark-theme #review-form {
+    background-color: #1e1e1e !important;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* 3. "Клиенттердің пікірі" жазуын ақ қылу */
+body.dark-theme #reviews h2, 
+body.dark-theme .review-form-section h2 {
+    color: #ffffff !important;
+}
+
+/* 4. Пікір карточкаларының ішіндегі мәтіндер */
+body.dark-theme .review-card p {
+    color: #eeeeee !important;
+}
+
+/* 5. Егер ақ жолақтар қалса, контейнерді де қарартамыз */
+body.dark-theme .container {
+    background-color: transparent !important;
+}
+
+#reviews {
+    padding-bottom: 60px !important; /* Астынан орын ашады */
+    margin-bottom: 40px !important; /* Келесі блокпен арақашықтық */
+}
+
+/* Немесе Footer-дің үстінен орын ашу */
+.contact-section, footer {
+    margin-top: 50px !important;
+}
+
+#reviews {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2; /* Жасыл блоктың үстінде көрінуі үшін */
+}
+
+/* Пікірлер бөлімінің ақ фонын үлкейту */
+#reviews .container {
+    max-width: 1200px; /* Фонның жалпы енін үлкейтеді */
+    margin: 0 auto;    /* Ортаға қояды */
+    background-color: #ffffff; /* Ақ фон */
+    padding: 50px 30px; /* Ішкі жағынан (жоғары-төмен және шетінен) бос орын қосады */
+    border-radius: 20px; /* Бұрыштарын сәл дөңгелетейді */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Жеңіл көлеңке қосады */
+}
+
+/* "Клиенттердің пікірі" деген тақырыптың үстінен бос орын қосу */
+.reviews-h2 {
+    margin-bottom: 40px !important;
+    padding-top: 20px;
+}
+

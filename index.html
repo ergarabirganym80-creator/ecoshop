@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoShop - Табиғи өнімдер дүкені</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* Сайт жұмсақ сырғуы үшін */
+        html { scroll-behavior: smooth; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+           <a href="#" class="logo">
+    <span style="font-family: 'Georgia', serif; font-weight: bold;">EcoShop</span>
+            </a>
+
+            <nav>
+
+                <a href="#">Басты бет</a>
+                <a href="#about">Біз туралы</a>
+                <a href="#categories-site" class="catalog-link">Каталог</a>
+                <a href="#reviews">Пікірлер</a>
+                <a href="#contact">Байланыс</a>
+                <div class="nav-extra">
+                    <div class="cart-wrapper" onclick="openCart()" style="cursor: pointer;"> 
+    <span class="cart-icon-top">🛒</span>
+    <span id="cart-count">0</span>
+</div>
+
+        <button id="dark-mode-toggle" class="mode-btn">🌙</button>
+        <div class="lang-switcher">
+            <span id="lang-kz" class="lang-btn active" onclick="setLanguage('kz')">KZ</span>
+            <span class="divider">|</span>
+            <span id="lang-ru" class="lang-btn" onclick="setLanguage('ru')">RU</span>
+        </div>
+    </div>
+</nav>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Табиғатпен үйлесімді өмір сүріңіз!</h1>
+        <p>Планетамызға оң әсер ететін экологиялық таза өнімдердің таңдамалы коллекциясын ашыңыз.</p>
+        <a href="#products" class="btn-main" style="text-decoration: none;">Дүкенге өту</a>
+    </section>
+
+    <section id="about" class="about-section">
+    <div class="container">
+        <h2 class="section-title">Біз туралы</h2>
+        
+        <div class="about-grid">
+            <div class="about-text">
+                <p><strong>EcoShop</strong> — бұл табиғи өнімдерді сүйетіндерге арналған орын. Біз өз жұмысымызды ең жоғары сапа мен қауіпсіздікті негізге ала отырып бастадық. Біз үшін әрбір тауардың табиғилығы мен адам денсаулығына пайдасы бірінші орында.</p>
+                <p>Біздің мақсатымыз — Қазақстанның әрбір үйіне экологиялық таза, сапалы өнімдерді жеткізу. Біз тек сенімді өндірушілермен жұмыс істейміз және әрбір өнімді өзіміз тексеріп, іріктеп аламыз.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>100%</h3>
+                    <p>Табиғи өнімдер</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Сапа</h3>
+                    <p>Тексерілген тауарлар</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Қазақстан</h3>
+                    <p>Ел бойынша жеткізу</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Эко</h3>
+                    <p>Қауіпсіз қаптама</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</section> <!-- Hero-ның соңы -->
+
+    <!-- ЖАҢА КАТЕГОРИЯЛАР БӨЛІМІ -->
+    <section class="categories-section"id="categories-site">
+        <div class="container">
+            <h2 class="section-title">Санаттар бойынша іздеу</h2>
+            <div class="categories-grid">
+                
+                <div class="category-item" onclick="filterCategory('bags')">
+                    <div class="category-icon">🛍️</div>
+                    <span>Сөмкелер</span>
+                </div>
+
+                <div class="category-item" onclick="filterCategory('care')">
+                    <div class="category-icon">🌿</div>
+                    <span>Күтім</span>
+                </div>
+
+                <div class="category-item" onclick="filterCategory('kitchen')">
+                    <div class="category-icon">☕</div>
+                    <span>Ыдыс-аяқ</span>
+                </div>
+
+                <div class="category-item" onclick="filterCategory('home')">
+                    <div class="category-icon">🏠</div>
+                    <span>Үйге</span>
+                </div>
+
+                <div class="category-item" onclick="filterCategory('all')">
+                    <div class="category-icon">✨</div>
+                    <span>Барлығы</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section"> <!-- Осы жерден "Біз туралы" басталады -->
+
+
+    <section id="products" class="products">
+    <h2 class="section-title">Таңдаулы өнімдер</h2>
+    <p>Ертеңгі күнге арналған ерекше экологиялық таза өнімдер</p>
+
+    <!-- 1. БАСҚАРУ ПАНЕЛІ (Үстінде тұруы керек) -->
+    <div class="catalog-controls">
+        <div class="controls-wrapper">
+            <div class="search-box">
+                <input type="text" id="catalog-search" placeholder="Тауарды іздеу..." onkeyup="liveSearch()">
+            </div>
+            <div class="sort-box">
+                <select id="price-sort" onchange="sortProducts()">
+                    <option value="default">Сұрыптау (әдепкі)</option>
+                    <option value="low">Арзаннан қымбатқа</option>
+                    <option value="high">Қымбаттан арзанға</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. ТАУАРЛАР ТОРЫНЫҢ БАСЫ -->
+    <div class="product-grid">
+
+
+
+            
+            <div class="card bags">
+                <img src="https://images.satu.kz/84685855_w640_h640_eko-sumka-pod.jpg" alt="Эко-сөмке" class="product-img">
+                <h3>Эко-сөмке</h3>
+                <p>2500 ₸</p>
+
+                <div class="product-info-wrapper">
+    <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+    <div class="info-content">
+        <p><strong>Не үшін қажет:</strong> Пластик пакеттерді алмастыру арқылы табиғатты ластанудан қорғайды.</p>
+        <p><strong>Қолдану тәсілі:</strong> Дүкенге барғанда өзіңізбен бірге алып жүріңіз. Ластанған жағдайда 30°C температурада жууға болады.</p>
+    </div>
+</div>
+                    <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Эко-сөмке' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+                    <button class="add-to-cart-btn lang-target" onclick="addToCart('Эко-сөмке', 2500 )">Себетке салу</button>
+            </div>
+            
+            <div class="card kitchen">
+    <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48542%2F48542_1.png&MediaId=20383054&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Түтікшелер" class="product-img">
+    <h3>Көп реттік түтікшелер</h3>
+    <p>1800 ₸</p>
+    <div class="product-info-wrapper">
+        <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+        <div class="info-content" style="display: none;">
+            <p><strong>Мәлімет:</strong> Тот баспайтын болаттан жасалған. Жиынтықта 4 түтікше және тазалайтын арнайы щетка бар.</p>
+        </div>
+    </div>
+    <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Көп реттік түтікшелер' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+    <button class="add-to-cart-btn" onclick="addToCart('Көп реттік түтікшелер', 1800)">Себетке салу</button>
+</div>
+
+<div class="card kitchen">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlP9fMac4Zmsxi27RQ9q6FpRFzBEolVxEZrQ&s" alt="Тақта" class="product-img">
+    <h3>Бамбук кесу тақтасы</h3>
+    <p>3500 ₸</p>
+    <div class="product-info-wrapper">
+        <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+        <div class="info-content" style="display: none;">
+            <p><strong>Мәлімет:</strong> Табиғи бамбуктан жасалған, бактерияларға төзімді және пышақты мұқалтпайды.</p>
+        </div>
+    </div>
+    <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Бамбук кесу тақтасы' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+    <button class="add-to-cart-btn" onclick="addToCart('Бамбук тақтасы', 3500)">Себетке салу</button>
+</div>
+
+<div class="card kitchen">
+    <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?w=400" alt="Ланч-бокс" class="product-img">
+    <h3>Био-ыдыс (Ланч-бокс)</h3>
+    <p>4200 ₸</p>
+    <div class="product-info-wrapper">
+        <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+        <div class="info-content" style="display: none;">
+            <p><strong>Мәлімет:</strong> Бидай сабанынан жасалған эко-пластик. Микротолқынды пешке салуға қауіпсіз.</p>
+        </div>
+    </div>
+    <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Био-ыдыс' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+    <button class="add-to-cart-btn" onclick="addToCart('Био-ланчбокс', 4200)">Себетке салу</button>
+</div>
+
+            <div class="card home">
+    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400" alt="Майлық" class="product-img">
+    <h3>Микрофибра майлықтар</h3>
+    <p>1200 ₸</p>
+    <div class="product-info-wrapper">
+        <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+        <div class="info-content" style="display: none;">
+            <p><strong>Мәлімет:</strong> Химиясыз тазалауға арналған. Суды жақсы сіңіреді және ұзақ мерзімді.</p>
+        </div>
+    </div>
+    <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Микрофибра майлықтар' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+    <button class="add-to-cart-btn" onclick="addToCart('Микрофибра майлық', 1200)">Себетке салу</button>
+</div>
+
+<div class="card home">
+    <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=400" alt="Шам" class="product-img">
+    <h3>Хош иісті соя шамы</h3>
+    <p>5000 ₸</p>
+    <div class="product-info-wrapper">
+        <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+        <div class="info-content" style="display: none;">
+            <p><strong>Мәлімет:</strong> Табиғи соя балауызы. Жану кезінде зиянды заттар бөлмейді. Жану уақыты - 40 сағат.</p>
+        </div>
+    </div>
+    <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Хош иісті соя шамы' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+    <button class="add-to-cart-btn" onclick="addToCart('Соя шамы', 5000)">Себетке салу</button>
+</div>
+
+<div class="card home">
+    <img src="data:image/jpeg;base64,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" alt="Доптар" class="product-img">
+    <h3>Жүннен жасалған кептіргіш доптар</h3>
+    <p>3800 ₸</p>
+    <div class="product-info-wrapper">
+        <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+        <div class="info-content" style="display: none;">
+            <p><strong>Мәлімет:</strong> Киімді жұмсарту үшін қолданылады. Кондиционерді алмастырады және кептіру уақытын 25%-ға азайтады.</p>
+        </div>
+    </div>
+    <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Жүннен жасалған кептіргіш доптар" target="_blank" class="buy-btn">Сатып алу</a>
+    <button class="add-to-cart-btn" onclick="addToCart('Кептіргіш доптар', 3800)">Себетке салу</button>
+</div>
+            <div class="card bags">
+                <img src="https://images.satu.kz/237914090_w640_h640_shoppery-chernyj.jpg" alt="Мата шопер" class="product-img">
+                <h3>Минималистік шопер</h3>
+                <p>3200 ₸</p>
+
+                <div class="product-info-wrapper">
+    <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+    <div class="info-content" style="display: none;">
+        <p><strong>Мәлімет:</strong> 100% тығыз мақтадан жасалған. Салмағы 10 кг-ға дейін шыдайды.</p>
+    </div>
+</div>
+                <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Мата шопер' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+                <button class="add-to-cart-btn" onclick="addToCart('Мата шопер', 3200)">Себетке салу</button>
+</div>
+
+<!-- Жеміс-жидекке арналған тор -->
+<div class="card bags">
+    <img src="https://www.tryingmebag.com/upload/product/1617085812478422.jpg" alt="Тор сөмке" class="product-img">
+    <h3>Торлы сөмке (Авоська)</h3>
+    <p>1500 ₸</p>
+    <div class="product-info-wrapper">
+        <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+        <div class="info-content" style="display: none;">
+            <p><strong>Мәлімет:</strong> Көкөністер мен жемістерге арналған созылмалы, өте жеңіл тор сөмке.</p>
+        </div>
+    </div>
+     <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Торлы сөмке' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+    <button class="add-to-cart-btn" onclick="addToCart('Авоська', 1500)">Себетке салу</button>
+</div>
+
+            <!-- Бамбук тарақ -->
+<div class="card home">
+    <img src="https://img-1.kwcdn.com/product/fancy/5b8ffb86-ee84-45ca-bc89-93a2f94a0512.jpg?imageView2/2/w/1300/q/80/format/avif" alt="Тарақ" class="product-img">
+    <h3>Ағаш шаш тарақ</h3>
+    <p>2100 ₸</p>
+    <div class="product-info-wrapper">
+        <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+        <div class="info-content" style="display: none;">
+            <p><strong>Мәлімет:</strong> Антистатикалық әсері бар, шаштың түбін зақымдамайды.</p>
+        </div>
+    </div>
+    <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Ағаш тарақ' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+    <button class="add-to-cart-btn" onclick="addToCart('Ағаш тарақ', 2100)">Себетке салу</button>
+</div>
+
+            <div class="card care">
+                <img src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=400" alt="Щетка" class="product-img">
+                <h3>Бамбук тіс щеткасы</h3>
+                <p>1200 ₸</p>
+
+                <div class="product-info-wrapper">
+    <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+    <div class="info-content" style="display: none;">
+        <p><strong>Не үшін қажет:</strong> Пластик щеткалар табиғатта 500 жыл бойы шірімейді. Ал бамбук щеткасы 6 айда толықтай биоыдырайды және қоршаған ортаға зиян келтірмейді.</p>
+        <p><strong>Қолдану тәсілі:</strong> Күнделікті тіс тазалауға қолданыңыз. Қолданып болған соң құрғақ жерде сақтау ұсынылады. 2-3 ай сайын ауыстырып тұрған жөн.</p>
+    </div>
+</div>
+                <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Бамбук тіс щеткасы' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+                <button class="add-to-cart-btn lang-target" onclick="addToCart('Бамбук тіс щеткасы', 1200 )">Себетке салу</button>
+            </div>
+
+            <div class="card care">
+                <img src="https://massaget.kz/userdata/users/user_51387/1401879296.jpg" alt="Сабын" class="product-img">
+                <h3>Табиғи сабын</h3>
+                <p>1800 ₸</p>
+
+                <div class="product-info-wrapper">
+    <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+    <div class="info-content" style="display: none;">
+        <p><strong>Не үшін қажет:</strong> Өндірістік сабындардағы агрессивті химиялық заттар мен парабендердің орнына бұл сабын табиғи майлардан (зәйтүн, кокос) жасалған. Теріні құрғатпайды және су қоймаларына зиян келтірмейді.</p>
+        <p><strong>Қолдану тәсілі:</strong> Күнделікті қол мен бетті жууға, сондай-ақ душ қабылдауға жарамды. Сабын тез еріп кетпеуі үшін оны тесігі бар құрғақ сабын салғышта сақтаңыз.</p>
+    </div>
+</div>
+                <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Табиғи сабын' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+                <button class="add-to-cart-btn lang-target" onclick="addToCart('Табиғи сабын', 1800 )">Себетке салу</button>
+            </div>
+            
+            <div class="card kitchen">
+                <img src="https://www.shop.tatte.kz/image/cache/catalog/Upload/goods/_accessories1/cups/reusable_plastic_cup_black_2-506x580.jpg" alt="Кофе" class="product-img">
+                <h3>Көп реттік кофе стақаны</h3>
+                <p>4000 ₸</p>
+
+                <div class="product-info-wrapper">
+    <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+    <div class="info-content" style="display: none;">
+        <p><strong>Не үшін қажет:</strong> Күн сайын әлемде миллиондаған бір реттік қағаз стақандар қоқысқа тасталады. Олардың ішкі қабаты пластикпен қапталғандықтан, қайта өңдеуге келмейді. Бұл көп реттік стақан табиғатты ластанудан сақтайды.</p>
+        <p><strong>Қолдану тәсілі:</strong> Кофеханаға барғанда өзіңізбен бірге алып жүріңіз. Ыстық суға төзімді, жууға ыңғайлы және кофе дәмін өзгертпейді. Көптеген кофеханалар өз стақанымен келгендерге жеңілдік береді.</p>
+    </div>
+</div>
+                <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Көп реттік кофе стақаны' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+                <button class="add-to-cart-btn lang-target" onclick="addToCart('стақан', 4000 )">Себетке салу</button>
+            </div>
+
+            <div class="card kitchen">
+                <img src="https://i.ebayimg.com/images/g/1gIAAeSw~K1pOZFe/s-l1600.webp" alt="Майлық" class="product-img">
+                <h3>Балауыз майлықтар</h3>
+                <p>2300 ₸</p>
+
+                <div class="product-info-wrapper">
+    <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+    <div class="info-content" style="display: none;">
+        <p><strong>Не үшін қажет:</strong> Бұл тағамды орайтын зиянды пластик пленка мен фольганың экологиялық баламасы. Мақта матасы, ара балауызы және қарағай шайырынан жасалған. Тағамның ұзақ сақталуына көмектесетін антибактериалды қасиетке ие.</p>
+        <p><strong>Қолдану тәсілі:</strong> Жемістерді, көкөністерді, ірімшікті немесе нанды орап сақтаңыз. Қолдың жылуымен майлық жұмсарып, кез келген пішінді қабылдайды. Пайдаланып болған соң салқын сумен жуып, кептіріп қойыңыз (ыстық судан балауыз еріп кетеді). Бір жылға дейін қайта қолдануға болады.</p>
+    </div>
+</div>
+                <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Балауыз майлықтар' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+                <button class="add-to-cart-btn lang-target" onclick="addToCart('Балауыз майлықтар', 2300 )">Себетке салу</button>
+            </div>
+
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwupGTZWljqDR074JRFN0NHCJo3kXznbaDfQ&s" alt="Ұстара" class="product-img">
+                <h3>Металл ұстара</h3>
+                <p>5500 ₸</p>
+                <div class="product-info-wrapper">
+    <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+    <div class="info-content" style="display: none;">
+        <p><strong>Не үшін қажет:</strong> Бір реттік пластик ұстаралар қайта өңделмейді және тонналап қоқысқа тасталады. Ал бұл металл ұстара сізге өмір бойы қызмет ете алады. Тек оның жүзін (лезвие) ауыстырып тұрсаңыз жеткілікті, бұл пластик сатып алғаннан әлдеқайда арзанға түседі.</p>
+        <p><strong>Қолдану тәсілі:</strong> Ұстараны 30-45 градус бұрышпен ұстап, қатты баспай қолданыңыз. Сапалы металл өз салмағымен-ақ жақсы қырады. Пайдаланып болған соң жуып, құрғақ жерде сақтаңыз. Тот баспайтын болаттан жасалған.</p>
+    </div>
+</div>
+                <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Металл ұстара' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+                <button class="add-to-cart-btn lang-target" onclick="addToCart('Металл ұстара', 5500 )">Себетке салу</button>
+            </div>
+
+            <div class="card care">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyf25_ts_rZeLYrR9ge95SFIsMX3QBw6z6xA&s" alt="Люффа" class="product-img">
+                <h3>Люффа</h3>
+                <p>900 ₸</p>
+                <div class="product-info-wrapper">
+    <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+    <div class="info-content" style="display: none;">
+        <p><strong>Не үшін қажет:</strong> Люффа — бұл асқабақ тұқымдасына жататын өсімдіктен жасалған 100% табиғи ысқыш. Ол синтетикалық жөкелер сияқты мұхитқа микропластик бөлмейді және тозған кезде оны бақшаға көме салуға болады (толық шіриді).</p>
+        <p><strong>Қолдану тәсілі:</strong> Пайдалану алдында люффаны жылы суға бірнеше минутқа салып қойыңыз — ол ісініп, жұмсарады. Оны ыдыс жууға немесе денеге арналған ысқыш ретінде қолдануға болады. Пайдаланып болған соң жақсылап сығып, құрғақ жерде кептіріп сақтаңыз.</p>
+    </div>
+</div>
+                <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Люффа' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+                <button class="add-to-cart-btn lang-target" onclick="addToCart('Люффа', 900 )">Себетке салу</button>
+            </div>
+
+            <div class="card care">
+                <img src="https://kk.rotchi.com/upload/6562/1-884658.jpg" alt="Бамбук мақта таяқшалары" class="product-img">
+                <h3>Бамбук мақта таяқшалары</h3>
+                <p>1000 ₸</p>
+
+                <div class="product-info-wrapper">
+    <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+    <div class="info-content" style="display: none;">
+        <p><strong>Не үшін қажет:</strong> Кәдімгі пластик таяқшалар өте жеңіл болғандықтан, қайта өңдеуге келмейді және көбінесе мұхиттарға түсіп, жануарларға зиян келтіреді. Бұл таяқшалардың негізі бамбуктан, ал ұштары табиғи мақтадан жасалған, сондықтан олар 100% биоыдырайды.</p>
+        <p><strong>Қолдану тәсілі:</strong> Гигиеналық мақсатта, макияж түзетуде немесе техникалық тазалау жұмыстарында қолданыңыз. Қолданып болған соң қоқысқа тастасаңыз, олар қоршаған ортаға зиян келтірмей шіріп кетеді.</p>
+    </div>
+</div>
+                <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Бамбук мақта таяқшалары' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+                <button class="add-to-cart-btn lang-target" onclick="addToCart('Бамбук мақта таяқшалары', 1000 )">Себетке салу</button>
+            </div>
+
+            <div class="card home">
+                <img src="https://static1.biotus.ua/media/optimization/catalog/product/700/5/2/5257542923_gipoalergennij-poroshok-bez_jpg.webp" alt="Эко-ұнтақтар" class="product-img">
+                <h3>Эко-ұнтақтар</h3>
+                <p>2500 ₸</p>
+                <div class="product-info-wrapper">
+    <button class="info-btn" onclick="toggleInfo(this)">Толығырақ</button>
+    <div class="info-content" style="display: none;">
+        <p><strong>Не үшін қажет:</strong> Кәдімгі ұнтақтардағы фосфаттар су қоймаларына түскенде балдырлардың шамадан тыс өсуіне әкеліп, балықтардың қырылуына себеп болады. Бұл эко-ұнтақ өсімдік негізінде жасалған, құрамында агрессивті ПАВ, хлор және жасанды хош иістендіргіштер жоқ.</p>
+        <p><strong>Қолдану тәсілі:</strong> Автоматты және қолмен жууға жарамды. Төмен температурада да тиімді тазартады. Балалар киімі мен сезімтал терісі бар адамдар үшін өте қауіпсіз және мата талшықтарын бұзбайды.</p>
+    </div>
+</div>
+                <a href="https://wa.me/77473174791?text=Сәлеметсіз бе! Мен 'Эко-ұнтақтар' тауарын сатып алғым келеді." target="_blank" class="buy-btn">Сатып алу</a>
+                <button class="add-to-cart-btn lang-target" onclick="addToCart('Бамбук мақта таяқшалары', 2500 )">Себетке салу</button>
+            </div>
+
+
+        </div>
+    </section>
+
+    <section id="add-review" class="review-form-section">
+    <div class="container">
+        <h3>Пікір қалдыру</h3>
+        <form id="review-form">
+            <input type="text" id="reviewer-name" placeholder="Атыңыз" required>
+            <input type="email" id="reviewer-email" placeholder="Gmail поштаңыз (көрінеді)" required>
+            <textarea id="reviewer-text" placeholder="Пікіріңізді жазыңыз..." required></textarea>
+            <button type="submit" class="btn-submit">Жіберу</button>
+        </form>
+    </div>
+</section>
+
+    <section id="reviews">
+        <h2>Клиенттердің пікірі</h2>
+        <div class="reviews-container">
+            <div class="review-card">
+                <p>"Сөмке өте сапалы екен, маған қатты ұнады! Рахмет!"</p>
+                <span>- Аружан</span>
+            </div>
+            <div class="review-card">
+                <p>"Жеткізу тез болды. Сабынның иісі керемет."</p>
+                <span>- Данияр</span>
+            </div>
+            <div class="review-card stars-4">
+                <p>"Тауар жақсы, бірақ жеткізу бір күнге кешігіп келді. Сөмкенің сапасына сөзім жоқ!"</p>
+                <span>- Жансая</span>
+            </div>
+            <div class="review-card">
+                <p>"Эко-сөмке өте ыңғайлы екен. Дүкенге барғанда өзіммен бірге алып жүремін."</p>
+                <span>- Арман</span>
+            </div>
+        </div>
+    <footer id="contact">
+        <div class="footer-container">
+            <h2>Бізбен байланысыңыз</h2>
+            <p>Сұрақтарыңыз болса, жазыңыз:</p>
+            <div class="social-links" style="margin-top: 20px;">
+                <a href="https://wa.me/774731174791" target="_blank" class="btn whatsapp">WhatsApp</a>
+                <a href="https://instagram.com/salamatqyzy_aidana" target="_blank" class="btn instagram">Instagram</a>
+            </div>
+            <p style="margin-top: 30px; opacity: 0.7;">© 2026 EcoShop</p>
+        </div>
+    </footer>
+
+    <script>
+        let count = 0;
+        const cartCountElement = document.getElementById('cart-count');
+        const cartButtons = document.querySelectorAll('.cart-btn');
+
+        cartButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                count++;
+                cartCountElement.innerText = count;
+            });
+        });
+    </script>
+    <script>
+    const reviewForm = document.getElementById('review-form');
+    const reviewsContainer = document.querySelector('.reviews-container');
+
+    reviewForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Беттің қайта жүктелуін тоқтатады
+
+        const name = document.getElementById('reviewer-name').value;
+        const email = document.getElementById('reviewer-email').value;
+        const text = document.getElementById('reviewer-text').value;
+
+        // Жаңа пікір карточкасын жасау
+        const newReview = document.createElement('div');
+        newReview.classList.add('review-card');
+        newReview.innerHTML = `
+            <p>"${text}"</p>
+            <h4>- ${name}</h4>
+            <span class="reviewer-gmail">${email}</span>
+        `;
+
+        // Контейнердің басына қосу
+        reviewsContainer.prepend(newReview);
+
+        // Форманы тазалау
+        reviewForm.reset();
+        alert('Пікіріңіз үшін рахмет!');
+    });
+</script>
+
+<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+            style="position: fixed; bottom: 30px; left: 30px; background: #2d5a27; color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000;">
+        ↑
+    </button>
+    <script src="script.js"></script>
+
+    <div id="cart-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeCart()">&times;</span>
+        <h2>Себеттегі тауарлар</h2>
+        <ul id="cart-items-list">
+            </ul>
+        <hr>
+        <p><strong>Жалпы: </strong> <span id="total-price">0</span> ₸</p>
+        <button class="buy-btn" onclick="checkout()">Тапсырыс беру</button>
+    </div>
+</div>
+</body>
+</html>
