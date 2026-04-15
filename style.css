@@ -1529,3 +1529,149 @@ body.dark-theme .container {
         padding: 5px !important;
     }
 }
+
+/* --- МОБИЛЬДІ НҰСҚАНЫ ЖӨНДЕУ (768px-ден кіші экрандар) --- */
+@media (max-width: 768px) {
+    
+    /* 1. Навигацияны (Header) реттеу */
+    .header-container {
+        flex-direction: column; /* Логотип жоғарыда, меню астында */
+        gap: 10px;
+        padding: 10px;
+    }
+
+    nav {
+        flex-wrap: wrap; /* Меню сөздері сыймаса, келесі жолға түседі */
+        justify-content: center;
+        gap: 8px !important;
+    }
+
+    nav a {
+        font-size: 10px !important; /* Мәтінді кішірейту */
+        padding: 5px !important;
+    }
+
+    /* 2. Басты баннер (Hero) */
+    .hero {
+        height: auto !important;
+        min-height: 300px;
+        padding: 40px 15px !important;
+    }
+
+    .hero h1 {
+        font-size: 24px !important; /* Тақырыпты телефонға лайықтау */
+    }
+
+    .hero p {
+        font-size: 14px !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* 3. Тауарлар сеткасын бір бағанға қою */
+    .product-grid, .catalog-grid {
+        grid-template-columns: 1fr !important; /* Тауарлар бірінің астына бірі тұрады */
+        justify-items: center;
+        padding: 10px !important;
+    }
+
+    .card, .product-card {
+        width: 100% !important;
+        max-width: 320px; /* Тым жайылып кетпеуі үшін */
+    }
+
+    /* 4. Артықшылықтар (Features) бөлімін реттеу */
+    .features-container {
+        flex-direction: column; /* Домалақтарды тігінен тізу */
+        gap: 20px;
+    }
+
+    /* 5. Пікірлер бөлімі */
+    .reviews-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .review-card {
+        width: 100% !important;
+        max-width: 300px;
+    }
+
+    /* 6. Категориялар бөлімі */
+    .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Екі-екіден тұрады */
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .category-item {
+        width: 100% !important;
+        padding: 15px 5px;
+    }
+
+    /* 7. "Бізбен байланысыңыз" (Footer) */
+    footer, .contact-section {
+        padding: 30px 15px !important;
+    }
+
+    .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Экранның оң жаққа жылжып кетуін (scroll) тоқтату */
+    body, html {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
+}
+
+/* --- ТЕЛЕФОНДАҒЫ HEADER-ДІ ЖИНАҚТАУ (Media Query) --- */
+@media (max-width: 768px) {
+    
+    /* 1. Шапканың биіктігі мен ішкі бос орнын азайту */
+    header {
+        padding: 5px 0 !important;
+    }
+
+    .header-container {
+        flex-direction: column !important; /* Элементтерді бірінің астына бірі қою */
+        gap: 5px !important;
+    }
+
+    /* 2. Логотипті кішірейту */
+    .logo span {
+        font-size: 16px !important;
+        letter-spacing: 1px !important;
+    }
+
+    /* 3. Меню сөздерін (БАСТЫ БЕТ, КАТАЛОГ т.б.) бір қатарға жинақы тізу */
+    nav {
+        display: flex !important;
+        flex-wrap: wrap !important; /* Орын жетпесе келесі жолға түсу */
+        justify-content: center !important;
+        gap: 8px !important;
+    }
+
+    nav a {
+        font-size: 9px !important; /* Мәтін өлшемін кішірейту */
+        margin: 0 !important;
+        padding: 2px 5px !important;
+    }
+
+    /* 4. Себет пен режим батырмаларын реттеу */
+    .nav-extra {
+        gap: 10px !important;
+        margin-left: 0 !important;
+        justify-content: center;
+    }
+
+    /* 5. Басты суреттің (Hero) астындағы бос орындарды реттеу */
+    .hero {
+        padding-top: 20px !important;
+        height: auto !important;
+        min-height: 250px !important;
+    }
+}
