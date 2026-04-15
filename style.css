@@ -1,4 +1,7 @@
-
+img {
+    max-width: 100%;
+    height: auto;
+}
 :root {
     --bg-color: #ffffff;
     --text-color: #333333;
@@ -769,6 +772,7 @@ footer h2, .contact-section h2 {
 /* 1. Навигацияның ішіндегі мазмұнды шектеу */
 .header-container {
     max-width: 1200px; /* Ортадағы блоктардың енімен бірдей болуы керек */
+    width: 100%;
     margin: 0 auto;    /* Ортаға қою */
     padding: 0 20px;   /* Шетіне тиіп тұрмауы үшін */
     display: flex;
@@ -1064,6 +1068,8 @@ nav a {
     align-items: center;
     padding: 8px 5%;
     max-width: 100%; /* Экранның толық енін алу үшін */
+    width: 100%;
+    margin: 0 auto;
     box-sizing: border-box;
 }
 
@@ -1113,7 +1119,8 @@ header {
 }
 
 .header-container {
-    max-width: 1300px !important; /* Контейнерді шектедік */
+    max-width: 1200px !important; /* Контейнерді шектедік */
+    width: 100%;
     margin: 0 auto !important;
     display: flex !important;
     justify-content: space-between !important;
@@ -1433,6 +1440,7 @@ body.dark-theme .container {
 /* Пікірлер бөлімінің ақ фонын үлкейту */
 #reviews .container {
     max-width: 1200px; /* Фонның жалпы енін үлкейтеді */
+    width: 100%;
     margin: 0 auto;    /* Ортаға қояды */
     background-color: #ffffff; /* Ақ фон */
     padding: 50px 30px; /* Ішкі жағынан (жоғары-төмен және шетінен) бос орын қосады */
@@ -1486,4 +1494,10 @@ body.dark-theme .container {
         max-width: 100%;
         height: auto;
     }
+}
+
+.products-grid {
+    display: flex;
+    flex-wrap: wrap; /* Бұл орын жетпесе, тауарларды астына түсіреді */
+    justify-content: center;
 }
