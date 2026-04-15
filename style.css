@@ -1446,3 +1446,44 @@ body.dark-theme .container {
     padding-top: 20px;
 }
 
+
+/* --- ТЕЛЕФОНҒА АРНАЛҒАН КОД (768px-ден кіші экрандар) --- */
+@media (max-width: 768px) {
+    
+    /* 1. Басты баннердің (Hero) биіктігі мен мәтінін реттеу */
+    .hero {
+        height: 60vh !important; /* Биіктігін сәл азайтамыз */
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 28px !important; /* Тақырыпты кішірейту */
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 16px !important; /* Сипаттама мәтінін реттеу */
+    }
+
+    /* 2. Егер тауарлар қатар-қатар (сетка) тұрса, оларды бір бағанға қою */
+    /* Мұндағы .products-grid дегенді өз кодындағы контейнер атымен ауыстыр (мысалы, .row немесе .cards) */
+    .products-grid, .container, .row { 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100% !important;
+        padding: 10px !important;
+    }
+
+    /* 3. Әр тауардың (карточканың) енін телефонға лайықтау */
+    .product-card, .card {
+        width: 90% !important; /* Экранның 90%-ын алсын */
+        margin-bottom: 20px;
+    }
+
+    /* 4. Суреттер экраннан шығып кетпеуі үшін */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
