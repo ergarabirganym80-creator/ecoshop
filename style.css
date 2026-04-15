@@ -1454,7 +1454,20 @@ body.dark-theme .container {
     padding-top: 20px;
 }
 
+@media (max-width: 768px) {
+    .hero {
+        width: 100% !important; /* Енін шектеу */
+        height: auto !important;
+        min-height: 400px;
+        background-size: cover; /* Сурет толық сыюы үшін */
+        padding: 20px !important;
+    }
 
+    .hero h1 {
+        font-size: 22px !important; /* Мәтінді телефонға лайықтау */
+        word-wrap: break-word; /* Ұзын сөздерді келесі жолға көшіру */
+    }
+}
 /* --- ТЕЛЕФОНҒА АРНАЛҒАН КОД (768px-ден кіші экрандар) --- */
 @media (max-width: 768px) {
     
@@ -1500,4 +1513,19 @@ body.dark-theme .container {
     display: flex;
     flex-wrap: wrap; /* Бұл орын жетпесе, тауарларды астына түсіреді */
     justify-content: center;
+}
+
+@media (max-width: 768px) {
+    /* Мәзірді тігінен қою немесе кішірейту */
+    nav, .navbar, .menu { 
+        display: flex;
+        flex-wrap: wrap; /* Сөздер сыймаса астына түседі */
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav a, .menu a {
+        font-size: 12px !important; /* Қаріпті кішірейту */
+        padding: 5px !important;
+    }
 }
